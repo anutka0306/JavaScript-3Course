@@ -1,11 +1,44 @@
+class CartList {
+    constructor(container = ".cart__container"){
+        this.container = container;
+        this.goods = [];
+        this.allProducts = [];
+        this.totalPrice = 0;
+        this._fetchProducts();
+        this._render();
+        this.getTotalPrice();
+    }
+
+}
+
+class CartItem {
+    constructor(product){
+        this.title = product.title;
+        this.quantity = product.quantity;
+        this.price = product.price;
+        this.id = product.id;
+        this.img = img;
+    }
+}
+
+
 class ProductList {
     constructor(container = ".products"){
         this.container = container;
         this.goods = [];
         this.allProducts = [];
+        this.totalPrice = 0;
         this._fetchProducts();
         this._render();
+        this.getTotalPrice();
     }
+    getTotalPrice(){
+        for(let product of this.goods){
+            this.totalPrice += product.price;
+        }
+        console.log(this.totalPrice);
+    }
+
     _fetchProducts(){
         this.goods = [
             {id: 1, title: 'Notebook', price: 1000},
