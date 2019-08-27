@@ -81,6 +81,8 @@ class Hamburger{
         this.size = document.querySelectorAll('[data-group = burgerSize]');
         this.stuffing = document.querySelectorAll('[data-group = burgerStuffing]');
         this.topping = document.querySelectorAll('[data-group = burgerTopping]');
+        this.totalPrice = 0;
+        this.totalCalories = 0;
         this.getHamburgerOptions();
     }
     getHamburgerOptions(){
@@ -98,6 +100,7 @@ class Hamburger{
                 this.hamburger[1].push(this.stuffing[i].value);
                 this.hamburger[1].push(this.stuffing[i].getAttribute('data-price'));
                 this.hamburger[1].push(this.stuffing[i].getAttribute('data-calories'));
+
             }
         }
         for(let i = 0; i < this.topping.length; i++){
@@ -112,7 +115,11 @@ class Hamburger{
         for (let paramItem of param) {
             this.block.insertAdjacentHTML('beforeend', `<p>${paramItem}</p>`);
         }
+        this.totalPrice += Number(param[1]);
+        this.totalCalories += Number(param[2]);
     }
+        this.block.insertAdjacentHTML('beforeend', `<p>${this.totalCalories} - Каллорий</p>`);
+        this.block.insertAdjacentHTML('beforeend', `<p>${this.totalPrice} - Цена бургера</p>`);
 
     }
 }
