@@ -1,0 +1,29 @@
+body{
+  width: 100%;
+}
+.myForm{
+  width: 600px;
+  margin: 0 auto;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.myForm input{
+height: 30px;
+margin-bottom: 10px;
+padding-left: 10px;
+padding-right: 10px;
+}
+.send-form{
+  margin-top: 20px;
+  background-color: darkred;
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+  height: 30px;
+}
+.error{
+  border: 2px solid darkred;
+}
