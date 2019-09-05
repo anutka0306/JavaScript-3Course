@@ -22,7 +22,14 @@ const app = new Vue({
     },
     filterProduct(searchField, products){
       console.log(searchField);
-      console.log(products);
+      const regExp = new RegExp(searchField, 'i');
+      for(let product of products){
+        if(!product.product_name.match(regExp)){
+          document.getElementById(`${product.id_product}`).classList.add('invisible');
+        }else {
+          document.getElementById(`${product.id_product}`).classList.remove('invisible');
+        }
+      }
     }
   },
 
