@@ -17,9 +17,10 @@
                     <i class="fas fa-search"></i>
                 </button>
             </form>
-            <button class="btn-cart" type="button">Корзина</button>
-            <div class="cart-block">
-              <div class="cart-item" v-for="cartProduct of cartProducts" :data-id="cartProduct.id_product">
+            <button class="btn-cart" @click="show=!show" type="button">Корзина</button>
+            <div class="cart-block" v-if="show">
+              <div class="no-goods" v-if="cartProducts.length == 0">No goods</div>
+              <div class="cart-item" v-else v-for="cartProduct of cartProducts" :data-id="cartProduct.id_product">
                       <div class="product-bio">
                       <img :src="imgCatalog" alt="Some image" width="50">
                       <div class="product-desc">
@@ -29,7 +30,7 @@
                   </div>
                   </div>
                   <div class="right-block">
-                      <p class="product-price"></p>
+                      <p class="product-price">${{ cartProduct.quantity*cartProduct.price }}</p>
                       <button class="del-btn" @click="delProduct(cartProduct, cartProducts)" :data-id="cartProduct.id_product">&times;</button>
                   </div>
                   </div>
